@@ -6,12 +6,11 @@
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 11:54:45 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/11/02 12:26:42 by mromao-d         ###   ########.fr       */
+/*   Updated: 2022/12/04 13:15:49 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <ctype.h>
-#include <stdio.h>
+#include "libft.h"
 
 int	ft_isalnum(int i)
 {
@@ -22,10 +21,3 @@ int	ft_isalnum(int i)
 		return (1);
 	return (0);
 }
-/* 
-int main(void)
-{
-    printf("%d\n", isalnum('a'));
-    printf("%d\n", ft_isalnum(47));
-    return (0);
-} */

@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 12:29:49 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/04 15:21:35 by mromao-d         ###   ########.fr       */
+/*   Created: 2022/12/04 14:46:08 by mromao-d          #+#    #+#             */
+/*   Updated: 2022/12/04 15:00:26 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if ((c>= 65 && c <= 90) || (c >= 97 && c <= 122))
-		return (1);
-	return (0);
+	t_list	*new;
+	t_list	*begin;
+
+	if (lst == NULL || f == NULL)
+		return (NULL);
+	begin = 0;
+	while (lst)
+	{
+		if (!(new = ft_lstnew((*f)(lst->content))))
+		{
+			ft_lstclear(&begin, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&begin, new);
+		lst = lst->next;
+	}
+	return (begin);
 }
-/*
-int main(void)
-{
-    printf("%d\n", isalpha('\n'));
-    printf("%d\n", ft_isalpha('\n'));
-    return (0);
-}
-*/

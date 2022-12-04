@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 12:29:49 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/04 15:21:35 by mromao-d         ###   ########.fr       */
+/*   Created: 2022/11/11 13:26:54 by mromao-d          #+#    #+#             */
+/*   Updated: 2022/12/04 15:30:01 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strdup(const char *s)
 {
-	if ((c>= 65 && c <= 90) || (c >= 97 && c <= 122))
-		return (1);
-	return (0);
+	char	*new;
+	char	*temp;
+	size_t	i;
+	size_t	size;
+
+	size = ft_strlen(s);
+	temp = (char *) s;
+	new = (char *)malloc(sizeof(char) * (size + 1));
+	if (!(new))
+		return ('\0');
+	i = 0;
+	while (s[i])
+	{
+		new[i] = temp[i];
+		i++;
+	}
+	new[i] = '\0';
+	return (new);
 }
-/*
-int main(void)
-{
-    printf("%d\n", isalpha('\n'));
-    printf("%d\n", ft_isalpha('\n'));
-    return (0);
-}
-*/

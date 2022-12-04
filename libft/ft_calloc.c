@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 12:45:56 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/04 17:01:47 by mromao-d         ###   ########.fr       */
+/*   Created: 2022/11/07 11:35:47 by mromao-d          #+#    #+#             */
+/*   Updated: 2022/12/04 15:36:15 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *s, int c)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	int	i;
+	char	*output;
 
-	i = 0;
-	while (s[i] != c && s[i] != '\0')
-	{
-		i++;
-	}
-	if (s[i] == c)
-		return ((char *)&s[i]);
-	else
-		return (NULL);
+	output = (void *) malloc(sizeof(char) * (nmemb * size));
+	if (!(output || nmemb || size))
+		return ('\0');
+	ft_bzero (output, nmemb);
+	return (output);
 }
 /* 
 int	main(void)
 {
-    printf("%s\n", strchr("asdzasdsszzggrd", 'a'));
-    printf("%s\n", ft_strchr("asdzasdsszzggrd", 'g'));
-    return (0);
-}
+	char *teste;
+
+	teste = malloc(5 * sizeof(char));	
+	if (!teste)
+		return (0);
+	strcpy(teste, "asdd");
+	printf("%s\n", teste);
+	printf("%p\n", malloc(2 * sizeof(char)));
+	printf("%s\n", teste);
+	free (teste);
+	return (0);
  */

@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 12:29:49 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/04 15:21:35 by mromao-d         ###   ########.fr       */
+/*   Created: 2022/11/20 11:46:14 by mromao-d          #+#    #+#             */
+/*   Updated: 2022/12/04 14:18:47 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if ((c>= 65 && c <= 90) || (c >= 97 && c <= 122))
-		return (1);
-	return (0);
+	char	*sptr;
+	int		i;
+
+	if (!s || !f)
+		return (NULL);
+	sptr = malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (!sptr)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		sptr[i] = f(i, s[i]);
+		i++;
+	}
+	sptr[i] = '\0';
+	return (sptr);
 }
-/*
-int main(void)
-{
-    printf("%d\n", isalpha('\n'));
-    printf("%d\n", ft_isalpha('\n'));
-    return (0);
-}
-*/

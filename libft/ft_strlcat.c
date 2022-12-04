@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 12:29:49 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/04 15:21:35 by mromao-d         ###   ########.fr       */
+/*   Created: 2022/11/06 13:08:00 by mromao-d          #+#    #+#             */
+/*   Updated: 2022/12/04 14:13:15 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(int c)
+int	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	if ((c>= 65 && c <= 90) || (c >= 97 && c <= 122))
-		return (1);
-	return (0);
+	size_t	i;
+	size_t	j;
+
+	if (size == 0)
+		size = ft_strlen(src);
+	else if (size <= ft_strlen(dst))
+		size += ft_strlen(src);
+	else
+		size = ft_strlen(src) + ft_strlen(dst);
+	i = ft_strlen(dst);
+	j = 0;
+	while (i < size)
+		dst[i++] = src[j++];
+	return (size);
 }
-/*
-int main(void)
-{
-    printf("%d\n", isalpha('\n'));
-    printf("%d\n", ft_isalpha('\n'));
-    return (0);
-}
-*/

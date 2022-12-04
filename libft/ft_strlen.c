@@ -6,16 +6,15 @@
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 12:36:04 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/11/02 12:38:10 by mromao-d         ###   ########.fr       */
+/*   Updated: 2022/11/20 11:33:25 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdio.h>
+#include "libft.h"
 
-int	ft_strlen(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	unsigned long	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i] != '\0')
