@@ -6,7 +6,7 @@
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 12:43:36 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/11/11 13:26:16 by mromao-d         ###   ########.fr       */
+/*   Updated: 2022/12/30 18:17:50 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_tolower(int c)
 {
-	c = (unsigned char) c;
 	if (c >= 65 && c <= 90)
 		return (c + 32);
 	return (c);

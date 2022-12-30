@@ -6,7 +6,7 @@
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 13:37:47 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/04 14:01:35 by mromao-d         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:21:17 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int	i;
+	unsigned int	i;
 
 	if (!s || !f)
 		return ;
+	i = 0;
 	while (s[i])
 	{
-		f(i, &(s[i]));
+		f(i, &s[i]);
 		i++;
 	}
 }

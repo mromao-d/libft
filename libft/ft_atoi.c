@@ -6,27 +6,39 @@
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/06 12:44:29 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/11/11 13:35:49 by mromao-d         ###   ########.fr       */
+/*   Updated: 2022/12/28 18:16:30 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char	*str)
+int	ft_atoi(const char *str)
 {
 	int	i;
+	int	sign;
 	int	result;
 
 	i = 0;
 	result = 0;
+	sign = 1;
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'\
+		|| str[i] == '\f' || str[i] == '\r')
+		i++;
+	if (str[i] == '-')
+		sign = -1;
 	if (str[i] == '+' || str[i] == '-')
 		i++;
 	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
 	{
-		result = result * 10 + str[i] - 48;
-		i++;
+		if (str[i] == ' ')
+			i++;
+		else
+		{
+			result = result * 10 + str[i] - 48;
+			i++;
+		}
 	}
-	return (result);
+	return (result * sign);
 }
 
 /* int main(void)

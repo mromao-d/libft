@@ -6,7 +6,7 @@
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:35:47 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/04 15:36:15 by mromao-d         ###   ########.fr       */
+/*   Updated: 2022/12/26 13:26:12 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	*ft_calloc(size_t nmemb, size_t size)
 {
 	char	*output;
 
-	output = (void *) malloc(sizeof(char) * (nmemb * size));
-	if (!(output || nmemb || size))
-		return ('\0');
-	ft_bzero (output, nmemb);
+	output = malloc(sizeof(char) * (nmemb * size));
+	if (output == NULL)
+		return (NULL);
+	ft_bzero (output, nmemb * size);
 	return (output);
 }
 /* 

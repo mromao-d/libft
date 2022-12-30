@@ -6,7 +6,7 @@
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:22:52 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/04 14:02:58 by mromao-d         ###   ########.fr       */
+/*   Updated: 2022/12/19 11:16:35 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,18 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	size_t	i;
-	char	*str;
+	size_t			i;
+	unsigned char	*str;
+	unsigned char	chr;
 
 	i = 0;
-	str = (void *)s;
-	while ((str[i] != (char)c) && (i < n))
+	str = (unsigned char *)s;
+	chr = (unsigned char) c;
+	while (i < n)
+	{
+		if (str[i] == chr)
+			return ((void *)&str[i]);
 		i++;
-	if (str[i] != (char)c)
-		return (0);
-	return (str);
+	}
+	return (NULL);
 }
-/* 
-int	main(void)
-{
-	printf("The real result is: %p\n", memchr("Manuel", 'n', 7));
-	printf("The real result is: %p\n", memchr("Manuel", 'M', 7));
-	printf("My result is: %p\n", ft_memchr("Manuel", 'e', -9));
-} */

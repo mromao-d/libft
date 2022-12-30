@@ -6,7 +6,7 @@
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 12:41:14 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/11/11 13:26:24 by mromao-d         ###   ########.fr       */
+/*   Updated: 2022/12/30 18:17:40 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_toupper(int c)
 {
-	c = (unsigned char) c;
 	if (c >= 97 && c <= 122)
 		return (c - 32);
 	return (c);

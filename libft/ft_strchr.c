@@ -6,7 +6,7 @@
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 12:45:56 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/04 17:01:47 by mromao-d         ###   ########.fr       */
+/*   Updated: 2022/12/30 16:34:41 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,20 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
+	unsigned char	chr;
 
-	i = 0;
-	while (s[i] != c && s[i] != '\0')
-	{
-		i++;
-	}
-	if (s[i] == c)
-		return ((char *)&s[i]);
-	else
-		return (NULL);
+	chr = c;
+	while (*s && chr != *s)
+		s++;
+	if (*s == chr)
+		return ((char *)s);
+	return (NULL);
 }
 /* 
 int	main(void)
 {
-    printf("%s\n", strchr("asdzasdsszzggrd", 'a'));
-    printf("%s\n", ft_strchr("asdzasdsszzggrd", 'g'));
+    printf("%s\n", strchr("asdzasdsszzggrd", '\0'));
+    printf("%s\n", ft_strchr("asdzasdsszzggrd", '\0'));
     return (0);
 }
  */
