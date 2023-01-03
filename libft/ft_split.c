@@ -6,67 +6,62 @@
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 17:38:31 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/30 18:33:45 by mromao-d         ###   ########.fr       */
+/*   Updated: 2023/01/03 13:31:09 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	cw(char const *s, char c)
+static int	char_count(char const *s, char c)
 {
-	size_t	cont_words;
+	size_t	i;
+	int		has;
 
-	cont_words = 0;
+	i = 0;
+	has = 1;
 	while (*s)
-	{
-		if (*s != c && (*(s + 1) == c || *(s + 1) == '\0'))
-			cont_words++;
+	{	
+		if (*s == c)
+			has = 1;
+		if (*s != c && has == 1)
+		{	
+			has = 0;
+			i++;
+		}
 		s++;
 	}
-	return (cont_words);
-}
-
-static char	**str_malloc(char const *s, char c)
-{
-	char	**split;
-	int		count_words;
-
-	count_words = cw(s, c);
-	split = malloc((count_words + 1) * sizeof(char *));
-	if (!split)
-		return (NULL);
-	split[count_words] = 0;
-	return (split);
+	return (i);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**split;
-	int		index;
-	int		posi;
+	char	**output;
+	size_t	count;
+	size_t	i;
 
+	count = 0;
+	i = 0;
 	if (!s)
 		return (NULL);
-	posi = 0;
-	index = 0;
-	split = str_malloc(s, c);
-	if (!split)
+	output = malloc(sizeof(char *) * (char_count(s, c) + 1));
+	if (!output)
 		return (NULL);
+	output [char_count(s, c)] = 0;
 	while (*s)
 	{
 		while (*s == c && *s)
 			s++;
-		while (s[index] != c && s[index])
-			index++;
+		while (s[count] != c && s[count])
+			count++;
 		if (*s)
-			split[posi] = ft_substr(s, 0, index);
-		posi++;
-		s = s + index;
-		index = 0;
+			output[i] = ft_substr(s, 0, count);
+		i++;
+		s = s + count;
+		count = 0;
 	}
-	return (split);
+	return (output);
 }
-
+/* 
 int	main(void)
 {
 	char	*s;
@@ -78,10 +73,12 @@ int	main(void)
 	c = 'n';
 	s = "My name is Manuel";
 	output = ft_split(s, c);
+	printf("%ld\n", first_char(s, c));
+	printf("%s\n", ft_substr(s, 0, first_char(s, c)));
 	while (i <= 9)
 	{
 		printf("string %d : %s\n", i, output[i]);
 		i++;
 	}
 	return (0);
-}
+} */

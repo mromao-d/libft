@@ -6,7 +6,7 @@
 /*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 13:26:54 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/26 13:44:14 by mromao-d         ###   ########.fr       */
+/*   Updated: 2023/01/03 12:31:37 by mromao-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strdup(const char *s)
 	temp = (char *) s;
 	new = (char *)malloc(sizeof(char) * (size + 1));
 	if (!(new))
-		return ('\0');
+		return (0);
 	i = 0;
 	while (s[i])
 	{
