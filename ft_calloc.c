@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/07 11:35:47 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/26 13:26:12 by mromao-d         ###   ########.fr       */
+/*   Created: 2025/11/02 12:43:43 by mromao-s          #+#    #+#             */
+/*   Updated: 2025/11/02 12:47:00 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,11 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	char	*output;
+	char	*out;
 
-	output = malloc(sizeof(char) * (nmemb * size));
-	if (output == NULL)
+	out = malloc(sizeof(char) * (nmemb * size));
+	if (!out)
 		return (NULL);
-	ft_bzero (output, nmemb * size);
-	return (output);
+	ft_bzero(out, nmemb * size);
+	return (out);
 }
-/* 
-int	main(void)
-{
-	char *teste;
-
-	teste = malloc(5 * sizeof(char));	
-	if (!teste)
-		return (0);
-	strcpy(teste, "asdd");
-	printf("%s\n", teste);
-	printf("%p\n", malloc(2 * sizeof(char)));
-	printf("%s\n", teste);
-	free (teste);
-	return (0);
- */

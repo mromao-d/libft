@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 11:55:17 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/04 14:06:20 by mromao-d         ###   ########.fr       */
+/*   Created: 2025/11/02 13:38:08 by mromao-s          #+#    #+#             */
+/*   Updated: 2025/11/02 14:09:44 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,22 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
-	char	*output;
-	int		keep_size;
+	char	*out;
 
-	i = 0;
-	keep_size = ft_strlen((char *)s2);
-	output = (char *)malloc(sizeof(char) * (ft_strlen((char *)s1)
-				+ ft_strlen((char *)s2) + 1));
-	if (!(output))
-		return (0);
-	while (i < ft_strlen((char *)s1))
-	{
-		output[i] = s1[i];
-		i++;
-	}
-	while ((i < ft_strlen((char *)s1) + keep_size && *s2))
-	{
-		output[i] = *s2++;
-		i++;
-	}
-	output[i] = '\0';
-	return (output);
+	out = ft_calloc(sizeof(char), ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!out)
+		return (NULL);
+	ft_strlcpy(out, s1, ft_strlen(s1) + 1);
+	ft_strlcat(out, s2, ft_strlen(s1) + ft_strlen(s2) + 1);
+	return (out);
 }
-/* 
-int	main(void)
-{
-	printf("%s", ft_strjoin("My name is", "Manuel"));
+
+/* int	main(void) {
+	char	*s;
+
+	// s = ft_strjoin("fuck ", "you!");
+	// s = ft_strjoin("fuck ", "");
+	s = ft_strjoin("", "you!");
+	printf("%s\n", s);
 	return (0);
 } */

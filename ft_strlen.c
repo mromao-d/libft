@@ -3,31 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 12:36:04 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/11/20 11:33:25 by mromao-d         ###   ########.fr       */
+/*   Created: 2025/10/27 20:32:03 by mromao-s          #+#    #+#             */
+/*   Updated: 2025/10/27 20:36:10 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
+	i = -1;
+	while (s[++i])
+		;
 	return (i);
 }
-/* 
-int main (void)
-{
-// The original function consideres the output a unsigned long (lu) \
-// and mine doesn't (d). Validate
-    printf("%lu\n", strlen("asdsad"));
-    printf("%d\n", ft_strlen("asdsad"));
-    return (0);
-} 
-*/

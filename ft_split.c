@@ -3,82 +3,93 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 17:38:31 by mromao-d          #+#    #+#             */
-/*   Updated: 2023/01/04 18:23:20 by mromao-d         ###   ########.fr       */
+/*   Created: 2025/11/02 14:10:33 by mromao-s          #+#    #+#             */
+/*   Updated: 2025/11/03 20:57:18 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	char_count(char const *s, char c)
+int	ft_cnt_wrds(char const *s, char c)
 {
-	size_t	i;
-	int		has;
+	int	i;
+	int	nb;
+
+	i = 2;
+	nb = 1;
+	if (!s || !s[0])
+		return (0);
+	if (s[2] == c)
+		nb = 0;
+	if (!s[1])
+		return (1);
+	while (s[i])
+	{
+		if (s[i] != c && s[i - 1] == c)
+			nb++;
+		i++;
+	}
+	return (nb);
+}
+
+int	ft_len_c(char const *s, char c)
+{
+	int	i;
 
 	i = 0;
-	has = 1;
-	while (*s)
-	{	
-		if (*s == c)
-			has = 1;
-		if (*s != c && has == 1)
-		{	
-			has = 0;
-			i++;
-		}
-		s++;
-	}
-	return (i);
+	while ((char )s[i++] != c)
+		;
+	// printf("i is: %i\n", i);
+	return (i - 1);
+}
+
+void	ft_free(char **splited, int n)
+{
+	int	i;
+
+	i = -1;
+	while (++i <= n)
+		free(splited[i]);
+	free(splited);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**output;
-	size_t	count;
-	size_t	i;
-
-	count = 0;
-	i = 0;
-	if (!s)
-		return (NULL);
-	output = malloc(sizeof(char *) * (char_count(s, c) + 1));
-	if (!output)
-		return (NULL);
-	output [char_count(s, c)] = 0;
-	while (*s)
-	{
-		while (*s == c && *s)
-			s++;
-		while (s[count] != c && s[count])
-			count++;
-		if (*s)
-			output[i] = ft_substr(s, 0, count);
-		i++;
-		s = s + count;
-		count = 0;
-	}
-	return (output);
-}
-
-int	main(void)
-{
-	char	*s;
-	char	**output;
-	char	c;
+	char	**out;
 	int		i;
+	int		wrds;
+	int		len;
 
-	i = 0;
-	c = 'a';
-	s = "aaaaaaaaaaaaaaaaaaaaa";
-	output = ft_split(s, c);
-	printf("%d\n", char_count(s, c));
-	printf("%s\n", ft_substr(s, 0, char_count(s, c)));
-	while (i <= 9)
+	wrds = ft_cnt_wrds(s, c);
+	out = ft_calloc(sizeof(char *), wrds + 1);
+	if (!out)
+		return (NULL);
+	i = -1;
+	while (*s == c)
+		s++;
+	while (++i < wrds)
 	{
-		printf("string %d : %s\n", i, output[i]);
-		i++;
+		out[i] = ft_substr(s, 0, ft_len_c(s, c));
+		if (!out[i])
+			ft_free(out, i);
+		// out	= ft_calloc
+		while (*s && *s != c)
+			s++;
+		while (*s && *s == c)
+			s++;
 	}
-	return (0);
+	out[i] = NULL;
+	return (out);
 }
+
+// int	main(void) {
+// 	char **splited = ft_split("^^^1^^2a,^^^^3^^^^--h^^^^", '^');
+// 	// printf("%i\n", ft_find_chr("aa", 'a'));
+// 	for (int i = 0; i <= ft_cnt_wrds("^^^1^^2a,^^^^3^^^^--h^^^^", '^'); i++) {
+// 		printf("%s\n", splited[i]);
+// 	}
+// 	printf("%i\n", ft_cnt_wrds("^^^1^^2a,^^^^3^^^^--h^^^^", '^'));
+// 	return (0);
+// }

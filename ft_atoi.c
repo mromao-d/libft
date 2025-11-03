@@ -3,53 +3,40 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/06 12:44:29 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/28 18:16:30 by mromao-d         ###   ########.fr       */
+/*   Created: 2025/11/01 14:14:51 by mromao-s          #+#    #+#             */
+/*   Updated: 2025/11/02 12:17:45 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *nptr)
 {
 	int	i;
 	int	sign;
-	int	result;
+	int	out;
 
 	i = 0;
-	result = 0;
+	out = 0;
 	sign = 1;
-	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n' || str[i] == '\v'\
-		|| str[i] == '\f' || str[i] == '\r')
+	while (nptr[i] == ' ' || nptr[i] == '\t' || nptr[i] == '\n'\
+	 || nptr[i] == '\v' || nptr[i] == '\f' || nptr[i] == '\r')
 		i++;
-	if (str[i] == '-')
-		sign = -1;
-	if (str[i] == '+' || str[i] == '-')
-		i++;
-	while (str[i] != '\0' && (str[i] >= '0' && str[i] <= '9'))
+	if (nptr[i] == '-')
 	{
-		if (str[i] == ' ')
-			i++;
-		else
-		{
-			result = result * 10 + str[i] - 48;
-			i++;
-		}
+		i++;
+		sign *= -1;
 	}
-	return (result * sign);
+	else if (nptr[i] == '+')
+		i++;
+	while (ft_isdigit(nptr[i]))
+		out = out * 10 + nptr[i++] - 48;
+	return (out * sign);
 }
 
-/* int main(void)
-{
-	char str1[] = "-12.12";
-	char str2[] = "5";
-
-    atoi("s");
-	printf("%s\n", str1);
-    printf("%d\n", atoi(str1) + atoi(str2));
-	printf("%d\n", ft_atoi(str1) + ft_atoi(str2));
-    printf("%d\n", atoi_l(str, "s"));
+/* int	main(void) {
+	printf("%i\n", ft_atoi("921474836470"));
 	return (0);
 } */

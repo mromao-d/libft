@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 12:45:56 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/30 16:34:41 by mromao-d         ###   ########.fr       */
+/*   Created: 2025/10/27 21:15:56 by mromao-s          #+#    #+#             */
+/*   Updated: 2025/11/01 15:10:13 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,9 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	unsigned char	chr;
-
-	chr = c;
-	while (*s && chr != *s)
+	while (*s && *s != c)
 		s++;
-	if (*s == chr)
-		return ((char *)s);
+	if (*s == c)
+		return ((char *) s);
 	return (NULL);
 }
-/* 
-int	main(void)
-{
-    printf("%s\n", strchr("asdzasdsszzggrd", '\0'));
-    printf("%s\n", ft_strchr("asdzasdsszzggrd", '\0'));
-    return (0);
-}
- */

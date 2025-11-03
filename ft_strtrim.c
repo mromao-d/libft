@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/11 16:18:07 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/30 18:02:35 by mromao-d         ###   ########.fr       */
+/*   Created: 2025/11/02 13:48:06 by mromao-s          #+#    #+#             */
+/*   Updated: 2025/11/02 14:08:36 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,36 @@
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*output;
-	size_t	i;
-	size_t	j;
+	int	i;
+	int	start;
+	int	end;
 
-	if (s1 == NULL || s1 == NULL)
-		return (NULL);
-	if (set[0] == '\0')
-		return (ft_strdup(s1));
-	i = 0;
-	j = ft_strlen(s1);
-	while (s1[i] && ft_strchr(set, s1[i]))
-		i++;
-	if (i == j)
-		return (ft_strdup("\0"));
-	while (j > 0 && ft_strchr(set, s1[j]))
-		j--;
-	output = ft_substr(s1, i, j - i + 1);
-	return (output);
+	i = -1;
+	start = 0;
+	while (set[++i])
+	{
+		if (set[i] == s1[start])
+		{
+			start++;
+			i = -1;
+		}
+	}
+	end = ft_strlen(s1);
+	i = -1;
+	while (set[++i])
+	{
+		if (set[i] == s1[end - 1])
+		{
+			end--;
+			i = -1;
+		}
+	}
+	return (ft_substr(s1, start, end - start));
 }
-/* 
-int main(void)
-{
-	char const *s1;
-	char const *set;
 
-	s1 = "   xxx   xxx";
-	set = "x ";
-	printf(" %s\n", ft_strtrim(s1, set));
+/* int	main(void) {
+	char s1[] = "lorem \n ipsum \t dolor \n sit \t amet";
+
+	printf("%s\n", ft_strtrim(s1, " "));
 	return (0);
 } */

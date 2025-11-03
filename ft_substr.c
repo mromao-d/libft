@@ -3,49 +3,49 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 11:33:26 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/30 16:58:17 by mromao-d         ###   ########.fr       */
+/*   Created: 2025/11/02 12:57:05 by mromao-s          #+#    #+#             */
+/*   Updated: 2025/11/02 14:09:28 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+size_t	ft_min(size_t one, size_t two)
+{
+	if (one > two)
+		return (two);
+	return (one);
+}
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*output;
 	size_t	i;
-	size_t	malloc_size;
+	size_t	delta;
+	char	*out;
 
 	if (!s)
 		return (NULL);
-	i = 0;
-	malloc_size = 0;
-	while (i + start < ft_strlen(s) && (malloc_size < len))
-	{
-		i++;
-		malloc_size++;
-	}
-	output = malloc(sizeof(char) * (malloc_size + 1));
-	if (!output)
+	if (start >= ft_strlen(s))
+		delta = 0;
+	else
+		delta = ft_strlen(s) - start;
+	out = ft_calloc(sizeof(char), ft_min(len, (delta)) + 1);
+	if (!out)
 		return (NULL);
-	i = 0;
-	while (i < malloc_size)
-	{
-		output[i] = s[start + i];
-		i++;
-	}
-	output[i] = 0;
-	return (output);
+	i = -1;
+	while (++i < ft_min(len, delta))
+		out[i] = s[start + i];
+	out[i] = '\0';
+	return (out);
 }
-/* 
-int	main(void)
-{
-	char const *s;
 
-	s = "123456789";
-	printf("%ld\n", ft_strlen(s));
-	printf("%s, %s", s, ft_substr(s, 0, 1));
+/* int	main(void) {
+	char const *s = "iohsvfuhsvf";
+	unsigned int start = 100;
+	size_t	len = 1;
+
+	printf("difference is: %lu\n", long (ft_strlen(s) - start));
 	return (0);
 } */

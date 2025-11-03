@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/05 19:30:40 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/30 16:42:23 by mromao-d         ###   ########.fr       */
+/*   Created: 2025/10/27 21:15:56 by mromao-s          #+#    #+#             */
+/*   Updated: 2025/11/02 13:37:02 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int				i;
-	unsigned char	a;
+	int	i;
 
-	a = (unsigned char) c;
 	i = ft_strlen(s);
-	while (s[i] != a && i > 0)
+	while ((i > 0) && (s[i] != c))
 		i--;
-	if (s[i] == a)
-		return ((char *)&s[i]);
-	else
+	if (i == 0)
 		return (NULL);
+	while (i-- > 0)
+		s++;
+	return ((char *)s);
 }
-/* 
-int main(void)
-{
-	printf("%s\n", strrchr("asdzasdsszzggrd", 'z'));
-	printf("%s\n", ft_strrchr("asdzasdsszzggrd", 'z'));
+
+/* int	main(void) {
+	printf("%s\n", strrchr("AABBCCDKHDJKFAA", 'M'));
+	printf("%s\n", ft_strrchr("AABBCCDKHDJKFAA", 'M'));
 	return (0);
 } */
