@@ -6,7 +6,7 @@
 #    By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/27 20:31:57 by mromao-s          #+#    #+#              #
-#    Updated: 2025/11/02 14:11:15 by mromao-s         ###   ########.fr        #
+#    Updated: 2025/11/10 19:24:16 by mromao-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,31 +43,54 @@ SRCS = ft_strlen.c \
 		ft_substr.c \
 		ft_strjoin.c \
 		ft_strtrim.c \
-		ft_split.c \
-		# main.c \
+		ft_itoa.c \
+		ft_strmapi.c \
+		ft_striteri.c \
+		ft_putchar_fd.c \
+		ft_putstr_fd.c \
+		ft_putendl_fd.c \
+		ft_putnbr_fd.c \
+		ft_split.c
+
+FILES_B = ft_lstnew.c \
+		ft_lstadd_front.c \
+		ft_lstsize.c \
+		ft_lstlast.c \
+		ft_lstadd_back.c \
+		ft_lstdelone.c \
+		ft_lstclear.c \
+		ft_lstiter.c \
+		ft_lstmap.c
 
 
 OBJS=$(SRCS:.c=.o)
-
-
-all: $(NAME)
+OBJS_B=$(FILES_B:.c=.o)
 
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(FLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
+
+all: $(NAME)
 
 run:
 	@$(CC) $(CFLAGS) $(NAME) -o main
 	@./main
 
+bonus: $(OBJS_B)
+	$(AR) $(NAME) $(OBJS_B)
+
+# run_bonus:
+# 	@$(CC) $(CFLAGS) $(NAME) -o main
+# 	@./main
+
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(OBJS) $(OBJS_B)
 
 fclean: clean
 	$(RM) $(NAME)
 
-re: clean all
+re: fclean all
 
 .PHONY: bonus all clean fclean

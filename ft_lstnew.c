@@ -3,23 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/04 14:46:40 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/04 15:00:40 by mromao-d         ###   ########.fr       */
+/*   Created: 2025/11/04 21:53:49 by mromao-s          #+#    #+#             */
+/*   Updated: 2025/11/08 14:32:06 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+// Allocates memory (using malloc(3)) and returns
+// a new node. The ’content’ member variable is
+// initialized with the given parameter ’content’.
+// The variable ’next’ is initialized to NULL.
 t_list	*ft_lstnew(void *content)
 {
-	t_list	*temp;
+	t_list	*out;
 
-	temp = (t_list *)malloc(sizeof(*temp));
-	if (!(temp))
+	out = ft_calloc(sizeof(*out), 1);
+	if (!out)
 		return (NULL);
-	temp->content = content;
-	temp->next = NULL;
-	return (temp);
+	out->content = content;
+	out->next = NULL;
+	return (out);
 }
+
+// int	main(void) {
+// 	printf("oasdiuasb\n\n\n");
+// 	return (0);
+// }

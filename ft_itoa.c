@@ -3,63 +3,65 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mromao-d <mromao-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 17:54:17 by mromao-d          #+#    #+#             */
-/*   Updated: 2022/12/30 18:26:44 by mromao-d         ###   ########.fr       */
+/*   Created: 2025/11/03 21:37:32 by mromao-s          #+#    #+#             */
+/*   Updated: 2025/11/04 21:07:34 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	count_nmbr(long nb)
+int	cnt_nbrs(long input)
 {
-	int	size;
+	int	nb;
 
-	size = 0;
-	if (nb == 0)
+	nb = 0;
+	if (input == 0)
 		return (1);
-	if (nb < 0)
-		nb *= -1;
-	while (nb > 0)
+	if (input < 0)
 	{
-		nb = nb / 10;
-		size++;
+		nb++;
+		input *= -1;
 	}
-	return (size);
+	while (input > 0)
+	{
+		nb++;
+		input /= 10;
+	}
+	return (nb);
 }
 
 char	*ft_itoa(int n)
 {
 	int		i;
-	long	nb;
-	char	*result;
+	char	*out;
+	long	dup_n;
 
-	nb = n;
-	i = count_nmbr(nb) + 1;
-	if (nb < 0)
-		i += 1;
-	if (nb == 0)
+	dup_n = n;
+	if (dup_n == 0)
 		return (ft_strdup("0"));
-	result = (void *) ft_calloc(1, i);
-	if (!(result))
+	out = ft_calloc(sizeof(char), cnt_nbrs(dup_n) + 1);
+	if (!out)
 		return (NULL);
-	result [--i] = '\0';
-	if (nb < 0)
+	i = cnt_nbrs(n);
+	if (dup_n < 0)
 	{
-		result[0] = '-';
-		nb *= -1;
+		dup_n *= -1;
+		out[0] = '-';
 	}
-	while (nb > 0)
+	while (dup_n > 0)
 	{
-		result[--i] = (nb % 10) + 48;
-		nb = nb / 10;
+		out[--i] = dup_n % 10 + 48;
+		dup_n /= 10;
 	}
-	return (result);
+	return (out);
 }
 
-/* int main (void)
-{
-	printf("%s\n", ft_itoa(0));
-	return (0);
-} */
+// int	main(void) {
+// 	for (int i = -10; i < 10; i++) {
+// 		printf("%s\n", ft_itoa(i));
+// 	}
+// 	// printf("%s\n", ft_itoa(0));
+// 	return (0);
+// }
