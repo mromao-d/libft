@@ -6,13 +6,13 @@
 /*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/03 21:37:32 by mromao-s          #+#    #+#             */
-/*   Updated: 2025/11/04 21:07:34 by mromao-s         ###   ########.fr       */
+/*   Updated: 2025/11/10 19:30:39 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	cnt_nbrs(long input)
+static int	cnt_nbrs(long input)
 {
 	int	nb;
 

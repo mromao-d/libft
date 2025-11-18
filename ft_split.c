@@ -6,13 +6,13 @@
 /*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 14:10:33 by mromao-s          #+#    #+#             */
-/*   Updated: 2025/11/10 19:21:35 by mromao-s         ###   ########.fr       */
+/*   Updated: 2025/11/12 12:36:18 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_cnt_wrds(char const *s, char c)
+static int	ft_cnt_wrds(char const *s, char c)
 {
 	int	i;
 	int	wrds;
@@ -33,7 +33,7 @@ int	ft_cnt_wrds(char const *s, char c)
 	return (wrds);
 }
 
-int	ft_len_c(char *s, char c)
+static int	ft_len_c(char *s, char c)
 {
 	int	i;
 	int	len;
@@ -48,7 +48,7 @@ int	ft_len_c(char *s, char c)
 	return (len);
 }
 
-void	*ft_free(char **splited)
+static void	*ft_free(char **splited)
 {
 	size_t	i;
 
@@ -70,6 +70,8 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	int		wrds;
 
+	if (!s)
+		return (NULL);
 	while (*s && *s == c)
 		s++;
 	wrds = ft_cnt_wrds(s, c);
@@ -92,16 +94,17 @@ char	**ft_split(char const *s, char c)
 }
 
 // int	main(void) {
-// 	char	s[] = "Tripouille";
+// 	// char	s[] = "Tripouille";
 // 	char c = ' ';
-// 	char **splited = ft_split(s, c);
+// 	// char **splited = ft_split(NULL, c);
 
+// 	// printf("%s\n", splited[0]);
 // 	// printf("%i\n", ft_find_chr("aa", 'a'));
 // 	// for (int i = 0; i <= ft_cnt_wrds(s, c); i++) {
-// 	for (int i = 0; i <= 2; i++) {
-// 		printf("%s\n", splited[i]);
-// 	}
-// 	printf("%i\n", ft_cnt_wrds(s, c));
+// 	// for (int i = 0; i <= 2; i++) {
+// 	// 	printf("%s\n", splited[i]);
+// 	// }
+// 	// printf("%i\n", ft_cnt_wrds(s, c));
 // 	// printf("%i\n", ft_count_words(s, c));
 // 	return (0);
 // }

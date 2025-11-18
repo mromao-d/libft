@@ -6,13 +6,13 @@
 /*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 12:57:05 by mromao-s          #+#    #+#             */
-/*   Updated: 2025/11/02 14:09:28 by mromao-s         ###   ########.fr       */
+/*   Updated: 2025/11/12 11:34:24 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_min(size_t one, size_t two)
+static size_t	ft_min(size_t one, size_t two)
 {
 	if (one > two)
 		return (two);
@@ -41,11 +41,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	return (out);
 }
 
-/* int	main(void) {
-	char const *s = "iohsvfuhsvf";
-	unsigned int start = 100;
-	size_t	len = 1;
+// int	main(void) {
+// 	// char const *s = "iohsvfuhsvf";
+// 	// unsigned int start = 100;
+// 	// size_t	len = 1;
 
-	printf("difference is: %lu\n", long (ft_strlen(s) - start));
-	return (0);
-} */
+// 	printf("difference is: %s\n", ft_substr("oisad sahdoisah d", 0, 3));
+// 	return (0);
+// }

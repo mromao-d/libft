@@ -6,7 +6,7 @@
 /*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/04 21:18:23 by mromao-s          #+#    #+#             */
-/*   Updated: 2025/11/04 21:20:32 by mromao-s         ###   ########.fr       */
+/*   Updated: 2025/11/12 12:13:37 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,3 +17,8 @@ void	ft_putchar_fd(char c, int fd)
 	write(fd, &c, 1);
 	return ;
 }
+
+// int	main(void) {
+// 	ft_putchar_fd('a', 1);
+// 	return (0);
+// }

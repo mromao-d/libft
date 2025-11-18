@@ -6,7 +6,7 @@
 /*   By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 21:07:50 by mromao-s          #+#    #+#             */
-/*   Updated: 2025/11/01 15:11:10 by mromao-s         ###   ########.fr       */
+/*   Updated: 2025/11/12 11:55:25 by mromao-s         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isalnum(int c)
 {
-	if (ft_isdigit(c) + ft_isalpha(c) == 0)
+	if ((ft_isdigit(c) + ft_isalpha(c)) == 0)
 		return (0);
 	return (1);
 }

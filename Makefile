@@ -6,7 +6,7 @@
 #    By: mromao-s <mromao-s@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/27 20:31:57 by mromao-s          #+#    #+#              #
-#    Updated: 2025/11/10 19:24:16 by mromao-s         ###   ########.fr        #
+#    Updated: 2025/11/10 19:31:31 by mromao-s         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -93,4 +93,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: bonus all clean fclean
+.PHONY: bonus all clean fclean re
